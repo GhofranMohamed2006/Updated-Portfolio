@@ -3,11 +3,19 @@
 Welcome to my personal portfolio!
 This website showcases my skills, projects, experience, services, and achievements as a Computer Science student and aspiring Frontend Developer.
 
+##  Live Demo
+
+[View My Portfolio] (https://ghofranmohamed2006.github.io/Updated-Portfolio/index.html)
+
 ##  About The Project
 
 This portfolio was created to introduce myself, highlight my technical skills, and showcase the projects I have worked on while developing my experience in web development.
 
 The website has a clean, responsive design that works across desktop, tablet, and mobile devices.
+
+##  Preview
+
+![Portfolio Preview] (assests\portfolio.jpeg)
 
 ##  Features
 
