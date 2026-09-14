@@ -65,7 +65,7 @@ Portfolio/
 ├── style.css
 ├── script.js
 │
-├── images/
+├── assests/
 │   └── ...
 │
 └── README.md
