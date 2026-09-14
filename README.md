@@ -15,7 +15,7 @@ The website has a clean, responsive design that works across desktop, tablet, an
 
 ##  Preview
 
-![Portfolio Preview] (assests\portfolio.jpeg)
+![Portfolio Preview](./assests/portfolio.jpeg)
 
 ##  Features
 
