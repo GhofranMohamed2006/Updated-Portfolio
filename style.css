@@ -78,9 +78,12 @@ body {
 }
 
 .home .description {
+  display: flex;
+  flex-direction: column;
   margin-right: 20px;
   padding: 20px;
   font-size: large;
+  justify-content: center;
 }
 
 .home .description span {
@@ -98,9 +101,10 @@ body {
 
 .hero-img img {
   width: 30vw;
-  height: 400px;
+  height: 350px;
   border-radius: 20px;
   object-fit: fill;
+  margin-top: 10px;
 }
 
 .home, 
@@ -114,7 +118,12 @@ body {
   border-bottom: 1px solid #B08A4F;
 }
 
-.home button,
+.home .hero-btns {
+  display: flex;
+  gap: 20px;
+}
+
+.home .hero-btns button,
 .projects button {
   background-color: #185844;
   color: #F2EBDD;
@@ -123,7 +132,6 @@ body {
   border: none;
   border-radius: 15px;
   box-shadow: 2px 2px 10px #B08A4F;
-  margin-right: 20px;
   margin-bottom: 10px;
   cursor: pointer;
   transition: all 0.2s ease;
@@ -132,11 +140,11 @@ body {
   margin-top: 20px;
 }
 
-.home button:active {
+.hero-btns button:active {
   transform: scale(0.95);
 }
 
-.home button:hover {
+.hero-btns button:hover {
   background-color: #78947F;
   color: #102F27;
 }
@@ -232,42 +240,67 @@ h2 {
 }
 
 .projects-types {
-  width: 400px;
+  width: 700px;
   margin: auto;
   justify-content: center;
 }
 
 .card {
   display: none;
+  min-height: 300px;
   background-color: #78947F;
   color: #102F27;
   border-radius: 15px;
   border-right: 6px solid #185844;
   border-bottom: 6px solid #185844;
-  padding: 10px;
+  padding: 20px;
   margin: 10px;
-  text-align: center;
+  text-align: left;
+  box-shadow: 0 10px 25px rgba(200, 180, 80, 0.25);
   transition: all 0.9s ease;
+  flex-direction: row;
+  align-items: center;
+  gap: 25px;
 }
 
 .card.active {
-  display: block;
+  display: flex;
 }
 
 .card:hover {
-  transform: scale(1.1);
+  transform: scale(1.05);
 }
 
-.card img {
-  width: 300px;
+.card .image {
+  width: 45%;
+  flex-shrink: 0;
+}
+
+.card .image img {
+  width: 100%;
   height: 250px;
-  object-fit: fill;
+  object-fit: cover;
+  border-radius: 12px;
+}
+
+.card .desc {
+  flex: 1;
+  text-align: center;
+}
+
+.card h3 {
+  margin-top: 0;
 }
 
 .card a {
   text-decoration: none;
   color: #102F27;
   cursor: pointer;
+}
+
+.card a:hover {
+  color: #185844;
+  text-decoration: underline;
 }
 
 .btns {
@@ -320,7 +353,7 @@ h2 {
 .achievements-types {
   background-color: #185844;
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
   margin-bottom: 20px;
 }
 
@@ -381,9 +414,14 @@ h2 {
     flex-direction: column;
     align-items: center;
     text-align: center;
+    justify-content: space-around;
   }
   .home .description {
     margin-right: 0;
+  }
+  .home .hero-btns {
+    flex-direction: column;
+    align-items: center;
   }
   .hero-img img {
     width: 80vw;
@@ -402,11 +440,18 @@ h2 {
     margin: 50px auto;
   }
   .card {
-    max-width: 70vw;
-    margin: 50px auto;
+    width: 80vw;
+    max-width: 700px;
+    margin: 10vw;
+    box-sizing: border-box;
+    flex-direction: column;
   }
-  .card img {
-    width: 50vw;
+  .card .image {
+    width: 100%;
+  }
+  .card .image img {
+    width: 100%;
+  height: 200px;
   }
   .achievements-types {
     display: grid;
