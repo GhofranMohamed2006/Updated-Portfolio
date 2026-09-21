@@ -66,11 +66,43 @@ body {
   border-radius: 3px;
 }
 
+.video-bg {
+  position: relative;
+  width: 100%;
+  height: auto;
+  overflow: hidden;
+  border-bottom: 1px solid #B08A4F;
+}
+
+.video-bg video {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  object-fit: cover;
+  transform: translate(-50%, -50%);
+}
+
+.video-bg::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.621);
+  z-index: 0;
+}
 
 .home {
-  padding: 10px;
+  position: relative;
+  z-index: 1;
+  padding: 40px 20px;
   display: flex;
   justify-content: space-between;
+  align-items: center;
 }
 
 .home h2 {
@@ -107,7 +139,6 @@ body {
   margin-top: 10px;
 }
 
-.home, 
 .education, 
 .skills, 
 .services, 
@@ -163,7 +194,7 @@ h2 {
 }
 
 .about {
-  background-color: #185844;
+  background-color: #143d32;
   max-width: 600px;
   margin: 50px auto;
   padding: 10px;
@@ -184,15 +215,61 @@ h2 {
 }
 
 .education {
+  background-color: #102F27;
+  color: #F2EBDD;
+  margin: 0;
   padding: 10px;
   border-top: 1px solid #B08A4F;
+  position: relative;
+  overflow: hidden;
+}
+
+.education::before,
+.education::after {
+  content: "";
+  position: absolute;
+  width: 300px;
+  height: 300px;
+  border-radius: 50%;
+  filter: blur(90px);
+  z-index: 0;
+  pointer-events: none;
+  opacity: 0.6;
+}
+
+.education::before {
+  background: #185844;
+  top: -50px;
+  left: -50px;
+  animation: moveGlow1 12s ease-in-out infinite alternate;
+}
+
+.education::after {
+  background: #78947F;
+  bottom: -50px;
+  right: -50px;
+  animation: moveGlow2 15s ease-in-out infinite alternate;
 }
 
 .details {
+  position: relative;
+  z-index: 1;
   max-width: 600px;
   margin: 50px auto;
   text-align: center;
   font-size: 17px;
+}
+
+@keyframes moveGlow1 {
+  0% {
+    transform: translate(0, 0) scale(1);
+  }
+  50% {
+    transform: translate(150px, 100px) scale(1.3);
+  }
+  100% {
+    transform: translate(50px, 200px) scale(0.9);
+  }
 }
 
 .skills .skills-types {
@@ -316,6 +393,16 @@ h2 {
   width: 45px;
   height: 45px;
   font-size: 20px;
+  transition: all 0.2s ease;
+}
+
+.btns button:hover {
+  background-color: #78947F;
+  color: #102F27;
+}
+
+.btns button:active {
+  transform: scale(0.95);
 }
 
 .additional-projects {
@@ -352,16 +439,56 @@ h2 {
   box-shadow: 0 10px 25px rgba(200, 180, 80, 0.25);
 }
 
-.achievements-types {
-  background-color: #185844;
-  display: flex;
-  justify-content: space-around;
-  margin-bottom: 20px;
+.marquee {
+  width: 100%;
+  overflow: hidden;
+  background-color: #102F27; 
+  padding: 20px 0;
+  white-space: nowrap;
+  position: relative;
 }
 
-.achievements-types div {
-  padding: 10px;
+.marquee-track {
+  display: flex;
+  width: max-content;
+  animation: scrollMarquee 20s linear infinite; 
+}
+
+.marquee:hover .marquee-track {
+  animation-play-state: paused;
+}
+
+.achievements-content {
+  display: flex;
+  background-color: #185844;
+  gap: 30px;
+  padding-right: 30px; 
+}
+
+.achievement-item {
+  padding: 15px 25px;
+  border-radius: 10px;
+  min-width: 250px;
   text-align: center;
+  flex-shrink: 0;
+}
+
+.achievement-item h3 {
+  margin-bottom: 5px;
+  font-size: 1.2rem;
+}
+
+.achievement-item p {
+  font-size: 0.9rem;
+}
+
+@keyframes scrollMarquee {
+  0% {
+    transform: translateX(-50%);
+  }
+  100% {
+    transform: translateX(0); 
+  }
 }
 
 .contact {
@@ -412,6 +539,10 @@ h2 {
   .header ul.active {
     display: flex;
   }
+  .video-bg {
+    min-height: auto;
+    padding: 40px 0;
+  }
   .home {
     flex-direction: column;
     align-items: center;
@@ -461,10 +592,6 @@ h2 {
   .card .desc {
     width: 100%;
     text-align: center;
-  }
-  .achievements-types {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
   }
   .contact {
     width: 80vw;
